@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150603014726) do
+ActiveRecord::Schema.define(version: 20150605141648) do
 
   create_table "addresses", force: true do |t|
     t.string   "address1"
@@ -152,6 +152,16 @@ ActiveRecord::Schema.define(version: 20150603014726) do
 
   add_index "printing_instructions", ["work_order_id"], name: "index_printing_instructions_on_work_order_id"
 
+  create_table "production_detail_inserts", force: true do |t|
+    t.integer  "insert_id"
+    t.integer  "production_details_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "production_detail_inserts", ["insert_id"], name: "index_production_detail_inserts_on_insert_id"
+  add_index "production_detail_inserts", ["production_details_id"], name: "index_production_detail_inserts_on_production_details_id"
+
   create_table "production_detail_tabs", force: true do |t|
     t.string   "production_details_id"
     t.string   "tab_id"
@@ -200,6 +210,7 @@ ActiveRecord::Schema.define(version: 20150603014726) do
     t.string   "number"
     t.integer  "project_type_id"
     t.string   "monthlySequenceNumber"
+    t.text     "projectDescription"
   end
 
   add_index "work_orders", ["client_id"], name: "index_work_orders_on_client_id"

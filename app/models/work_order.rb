@@ -16,7 +16,14 @@ class WorkOrder < ActiveRecord::Base
   
   
   before_validation :set_monthly_sequence_number, :set_workorder_number
+
+  def has_mailing_componant?
+    project_type.mailing if project_type
+  end
   
+  def has_printing_componant?
+    project_type.printing if project_type
+  end
   
   private
     def set_workorder_number
@@ -39,11 +46,6 @@ class WorkOrder < ActiveRecord::Base
       "#{Date.today.year.to_s[-2,2]}#{"%02d" % Date.today.month.to_s}"
     end
     
-    def has_mailing_componant?
-      project_type.mailing if project_type
-    end
+
     
-    def has_printing_componant?
-      project_type.printing if project_type
-    end
 end
