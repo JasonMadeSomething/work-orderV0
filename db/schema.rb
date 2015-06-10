@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150605141648) do
+ActiveRecord::Schema.define(version: 20150608201843) do
 
   create_table "addresses", force: true do |t|
     t.string   "address1"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20150605141648) do
     t.boolean  "machine"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "description"
   end
 
   create_table "labels", force: true do |t|
@@ -195,6 +196,12 @@ ActiveRecord::Schema.define(version: 20150605141648) do
     t.datetime "updated_at"
   end
 
+  create_table "statuses", force: true do |t|
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "tabs", force: true do |t|
     t.string   "location"
     t.string   "type"
@@ -211,9 +218,11 @@ ActiveRecord::Schema.define(version: 20150605141648) do
     t.integer  "project_type_id"
     t.string   "monthlySequenceNumber"
     t.text     "projectDescription"
+    t.integer  "status_id"
   end
 
   add_index "work_orders", ["client_id"], name: "index_work_orders_on_client_id"
   add_index "work_orders", ["project_type_id"], name: "index_work_orders_on_project_type_id"
+  add_index "work_orders", ["status_id"], name: "index_work_orders_on_status_id"
 
 end
