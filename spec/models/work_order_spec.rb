@@ -4,6 +4,7 @@ RSpec.describe WorkOrder, type: :model do
   it {should belong_to(:client)}
   it {should belong_to(:project_type)}
   it {should belong_to(:status)}
+  it {should belong_to(:labels)}
   it {should have_one(:presort_information)}
   it {should have_one(:printing_instructions)}
   it {should have_one(:production_details)}
@@ -24,7 +25,9 @@ RSpec.describe WorkOrder, type: :model do
     end
     
     it "should only return active work orders" do
-      expect(WorkOrder.schedule.count).to eq(5)
+      WorkOrder.schedule.each do |wo|
+        expect(wo).to be_active, "#{wo} should be active but is #{wo.status.description}"
+      end
     end
     it "should order work orders by due date" do
       due_today = FactoryGirl.create(:due_today_work_order)

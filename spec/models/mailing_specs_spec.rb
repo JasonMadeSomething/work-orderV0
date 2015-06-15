@@ -8,6 +8,8 @@ describe MailingSpecs do
     it { should validate_presence_of(:height)}
     it { should validate_presence_of(:weightOfSample)}
     
+    it {should have_many(:presort_informations)}
+    
     it "should allow height, width and weightOfSample to be decimals" do
         assert FactoryGirl.build(:letter_spec).valid?
     end

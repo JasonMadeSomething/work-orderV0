@@ -4,4 +4,5 @@ class MailingSpecs < ActiveRecord::Base
     validates_presence_of(:width)
     validates_presence_of(:height)
     validates_presence_of(:weightOfSample)
+    has_many(:presort_informations)
 end

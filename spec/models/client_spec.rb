@@ -11,4 +11,5 @@ describe Client do
       should_not allow_value('foo', '8ar', '1',  2 ).for(:clientnumber)
    end
    it {should validate_length_of(:clientnumber).is_equal_to(3)}
+   it {should have_many(:work_orders)}
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150608201843) do
+ActiveRecord::Schema.define(version: 20150610211417) do
 
   create_table "addresses", force: true do |t|
     t.string   "address1"
@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(version: 20150608201843) do
     t.boolean  "primaryContact"
   end
 
-  add_index "contacts", ["address_id"], name: "index_contacts_on_address_id"
-  add_index "contacts", ["client_id"], name: "index_contacts_on_client_id"
+  add_index "contacts", ["address_id"], name: "index_contacts_on_address_id", using: :btree
+  add_index "contacts", ["client_id"], name: "index_contacts_on_client_id", using: :btree
 
   create_table "deduping_instructions", force: true do |t|
     t.string   "name"
@@ -78,10 +78,10 @@ ActiveRecord::Schema.define(version: 20150608201843) do
   end
 
   create_table "mailing_specs", force: true do |t|
-    t.decimal  "height"
-    t.decimal  "width"
+    t.decimal  "height",         precision: 10, scale: 0
+    t.decimal  "width",          precision: 10, scale: 0
     t.integer  "sampleSize"
-    t.decimal  "weightOfSample"
+    t.decimal  "weightOfSample", precision: 10, scale: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -98,8 +98,8 @@ ActiveRecord::Schema.define(version: 20150608201843) do
     t.string   "permit_number"
   end
 
-  add_index "permits", ["client_id"], name: "index_permits_on_client_id"
-  add_index "permits", ["contact_id"], name: "index_permits_on_contact_id"
+  add_index "permits", ["client_id"], name: "index_permits_on_client_id", using: :btree
+  add_index "permits", ["contact_id"], name: "index_permits_on_contact_id", using: :btree
 
   create_table "piece_types", force: true do |t|
     t.datetime "created_at"
@@ -129,16 +129,18 @@ ActiveRecord::Schema.define(version: 20150608201843) do
     t.integer  "mail_class_id"
     t.integer  "sortation_id"
     t.integer  "labels_id"
+    t.integer  "postage_type_id"
+    t.integer  "piece_type_id"
   end
 
-  add_index "presort_informations", ["deduping_instructions_id"], name: "index_presort_informations_on_deduping_instructions_id"
-  add_index "presort_informations", ["error_record_handling_id"], name: "index_presort_informations_on_error_record_handling_id"
-  add_index "presort_informations", ["labels_id"], name: "index_presort_informations_on_labels_id"
-  add_index "presort_informations", ["mail_class_id"], name: "index_presort_informations_on_mail_class_id"
-  add_index "presort_informations", ["mailing_specs_id"], name: "index_presort_informations_on_mailing_specs_id"
-  add_index "presort_informations", ["permit_id"], name: "index_presort_informations_on_permit_id"
-  add_index "presort_informations", ["sortation_id"], name: "index_presort_informations_on_sortation_id"
-  add_index "presort_informations", ["work_order_id"], name: "index_presort_informations_on_work_order_id"
+  add_index "presort_informations", ["deduping_instructions_id"], name: "index_presort_informations_on_deduping_instructions_id", using: :btree
+  add_index "presort_informations", ["error_record_handling_id"], name: "index_presort_informations_on_error_record_handling_id", using: :btree
+  add_index "presort_informations", ["labels_id"], name: "index_presort_informations_on_labels_id", using: :btree
+  add_index "presort_informations", ["mail_class_id"], name: "index_presort_informations_on_mail_class_id", using: :btree
+  add_index "presort_informations", ["mailing_specs_id"], name: "index_presort_informations_on_mailing_specs_id", using: :btree
+  add_index "presort_informations", ["permit_id"], name: "index_presort_informations_on_permit_id", using: :btree
+  add_index "presort_informations", ["sortation_id"], name: "index_presort_informations_on_sortation_id", using: :btree
+  add_index "presort_informations", ["work_order_id"], name: "index_presort_informations_on_work_order_id", using: :btree
 
   create_table "printing_instructions", force: true do |t|
     t.datetime "created_at"
@@ -151,7 +153,7 @@ ActiveRecord::Schema.define(version: 20150608201843) do
     t.integer  "work_order_id"
   end
 
-  add_index "printing_instructions", ["work_order_id"], name: "index_printing_instructions_on_work_order_id"
+  add_index "printing_instructions", ["work_order_id"], name: "index_printing_instructions_on_work_order_id", using: :btree
 
   create_table "production_detail_inserts", force: true do |t|
     t.integer  "insert_id"
@@ -160,8 +162,8 @@ ActiveRecord::Schema.define(version: 20150608201843) do
     t.datetime "updated_at"
   end
 
-  add_index "production_detail_inserts", ["insert_id"], name: "index_production_detail_inserts_on_insert_id"
-  add_index "production_detail_inserts", ["production_details_id"], name: "index_production_detail_inserts_on_production_details_id"
+  add_index "production_detail_inserts", ["insert_id"], name: "index_production_detail_inserts_on_insert_id", using: :btree
+  add_index "production_detail_inserts", ["production_details_id"], name: "index_production_detail_inserts_on_production_details_id", using: :btree
 
   create_table "production_detail_tabs", force: true do |t|
     t.string   "production_details_id"
@@ -170,8 +172,8 @@ ActiveRecord::Schema.define(version: 20150608201843) do
     t.datetime "updated_at"
   end
 
-  add_index "production_detail_tabs", ["production_details_id"], name: "index_production_detail_tabs_on_production_details_id"
-  add_index "production_detail_tabs", ["tab_id"], name: "index_production_detail_tabs_on_tab_id"
+  add_index "production_detail_tabs", ["production_details_id"], name: "index_production_detail_tabs_on_production_details_id", using: :btree
+  add_index "production_detail_tabs", ["tab_id"], name: "index_production_detail_tabs_on_tab_id", using: :btree
 
   create_table "production_details", force: true do |t|
     t.integer  "WorkOrder_id"
@@ -180,7 +182,7 @@ ActiveRecord::Schema.define(version: 20150608201843) do
     t.integer  "work_order_id"
   end
 
-  add_index "production_details", ["WorkOrder_id"], name: "index_production_details_on_WorkOrder_id"
+  add_index "production_details", ["WorkOrder_id"], name: "index_production_details_on_WorkOrder_id", using: :btree
 
   create_table "project_types", force: true do |t|
     t.string   "name"
@@ -219,10 +221,11 @@ ActiveRecord::Schema.define(version: 20150608201843) do
     t.string   "monthlySequenceNumber"
     t.text     "projectDescription"
     t.integer  "status_id"
+    t.integer  "labels_id"
   end
 
-  add_index "work_orders", ["client_id"], name: "index_work_orders_on_client_id"
-  add_index "work_orders", ["project_type_id"], name: "index_work_orders_on_project_type_id"
-  add_index "work_orders", ["status_id"], name: "index_work_orders_on_status_id"
+  add_index "work_orders", ["client_id"], name: "index_work_orders_on_client_id", using: :btree
+  add_index "work_orders", ["project_type_id"], name: "index_work_orders_on_project_type_id", using: :btree
+  add_index "work_orders", ["status_id"], name: "index_work_orders_on_status_id", using: :btree
 
 end

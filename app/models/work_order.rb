@@ -2,6 +2,7 @@ class WorkOrder < ActiveRecord::Base
   belongs_to :client
   belongs_to :project_type
   belongs_to :status
+  belongs_to :labels
   has_one :presort_information
   has_one :printing_instructions
   has_one :production_details
