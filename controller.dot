@@ -1,0 +1,5 @@
+digraph controllers_diagram {
+	graph[overlap=false, splines=true]
+	"WorkOrderController" [shape=Mrecord, label="{WorkOrderController|archive\lclient_archive\lclient_schedule\lschedule\lshow\l|\l|_layout\lset_workorder\lset_workorders_archive\lset_workorders_schedule\l}"]
+	"ApplicationController" [shape=Mrecord, label="{ApplicationController|\l|\l|_layout\l}"]
+}
