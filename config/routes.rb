@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'work_order#schedule'
   get 'schedule', to: 'work_order#schedule'
   get 'archive', to: 'work_order#archive'
   

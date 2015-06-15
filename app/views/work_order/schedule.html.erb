@@ -1,2 +1,6 @@
-<h1>WorkOrder#schedule</h1>
+<% provide(:title, "Schedule") %>
+<h1>Schedule
+<%=  append_client(params[:client_id]) if params[:client_id] %>
+</h1>
 <p>Find me in app/views/work_order/schedule.html.erb</p>
+<%= render "listing" %>
