@@ -10,6 +10,16 @@ class WorkOrderController < ApplicationController
   def archive
   end
   
+  def new
+    client = Client.find_by(clientnumber: params[:client_number])
+    if client
+      @workorder = WorkOrder.new(client: client)
+      @workorder.set_workorder_number
+    else
+      redirect_to root_path, alert: "No Client Exists with that number"
+    end
+  end
+  
   def show
   end
   
@@ -29,7 +39,7 @@ class WorkOrderController < ApplicationController
     
     def set_workorders_schedule
       if params[:client_id]
-        @workorders = WorkOrder.where(client_id: params[:client_id])
+        @workorders = WorkOrder.schedule.where(client_id: params[:client_id])
       else
         @workorders = WorkOrder.schedule
       end

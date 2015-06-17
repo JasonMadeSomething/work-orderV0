@@ -20,6 +20,11 @@ class WorkOrder < ActiveRecord::Base
   
   before_validation :set_monthly_sequence_number, :set_workorder_number, on: :create, unless: @number
   
+  def set_workorder_number
+      set_monthly_sequence_number
+      self.number = "#{self.client.clientnumber}#{month_and_year_string}-#{self.monthlySequenceNumber}" if client
+  end
+  
   def self.schedule
     WorkOrder.joins(:status).where(statuses: {description: "Active"}).order(:dueDate)
   end
@@ -41,9 +46,7 @@ class WorkOrder < ActiveRecord::Base
   end
   
   private
-    def set_workorder_number
-      self.number = "#{self.client.clientnumber}#{month_and_year_string}-#{self.monthlySequenceNumber}" if client
-    end
+
     
     def set_monthly_sequence_number
       self.monthlySequenceNumber = get_next_sequence_number

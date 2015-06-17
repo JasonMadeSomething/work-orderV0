@@ -7,12 +7,19 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 puts "begin seeding"
 client = Client.create(name: "IPD", clientnumber: "880")
+mm = Client.create(name: "Mail Marketing",  clientnumber: "000")
+menorah_manor = Client.create(name: "Menorah Manor", clientnumber: "977")
+bgs = Client.create(name: "BGS", clientnumber: "022")
 address = Address.create(address1: "134 street street", address2: "apt #211",city: "St.petersburg", state: "FL", zip: "12345" )
-contact = Contact.create(name: "John Smith", client: client, address: address)
+contact = Contact.create(name: "John Smith", client: mm, address: address)
 error = ErrorRecordHandling.create(name: "Standard Errors", instruction: "remove standard error group")
 dedupe = DedupingInstructions.create(name: "Name and Address", instruction: "First and last name, and full address")
-permit = Permit.create(permitHolder: "Mail Marketing", client: client, crid: "1234567", postOffice: "Tampa", permit_number: "100", contact: contact)
-project = ProjectType.create(name: "Mailing", mailing: true,  printing: false)
-
-
-puts "#{client.inspect}\n#{address.inspect}#{contact.inspect}\n#{error.inspect}#{dedupe.inspect}\n#{permit.inspect}"
+permit = Permit.create(permitHolder: "Mail Marketing", client: mm, crid: "1234567", postOffice: "Tampa", permit_number: "100", contact: contact)
+mailing_project = ProjectType.create(name: "Mailing", mailing: true,  printing: false)
+other_project = ProjectType.create(name: "Other", mailing: false, printing: false)
+printing_project = ProjectType.create(name: "Variable Data Mailing", mailing: true, printing: true)
+active_status = Status.create(description: "Active")
+WorkOrder.create(client: client, dueDate: 5.day.from_now, status: active_status, project_type: other_project, projectDescription: "Black Book Mailing")
+WorkOrder.create(client: menorah_manor, dueDate: 7.day.from_now, status: active_status, project_type: other_project, projectDescription: "Mpnthly Newsletter")
+WorkOrder.create(client: bgs, dueDate: 30.day.from_now, status: active_status, project_type: other_project, projectDescription: "Amora Coffee")
+puts "Seeding complete"

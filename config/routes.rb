@@ -1,16 +1,16 @@
 Rails.application.routes.draw do
+  
   root 'work_order#schedule'
+  resources :work_order
   get 'schedule', to: 'work_order#schedule'
   get 'archive', to: 'work_order#archive'
   
   resources :client do
     get 'schedule', to: 'work_order#client_schedule'
     get 'archive', to: 'work_order#client_archive'
-    resources :work_order, only: [:new]
   end
-
-  resources :work_order, only: [:show, :edit, :update, :destroy, :create]
-
+ 
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

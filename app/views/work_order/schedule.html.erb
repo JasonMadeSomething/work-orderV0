@@ -1,6 +1,32 @@
 <% provide(:title, "Schedule") %>
-<h1>Schedule
-<%=  append_client(params[:client_id]) if params[:client_id] %>
-</h1>
-<p>Find me in app/views/work_order/schedule.html.erb</p>
-<%= render "listing" %>
+
+<div class="page-header">
+    <h1>Schedule
+    <%=  append_client(params[:client_id]) if params[:client_id] %>
+    </h1>
+</div>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Work Order Number</th>
+            <th>Client</th>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Due</th>
+
+        </tr>
+    </thead>
+    
+    <tbody>
+        <% @workorders.each do |workorder| %>
+        <tr>
+            <td><%=workorder.number%></td>
+            <td><%=workorder.client.name%></td>
+            <td><%=workorder.projectDescription%></td>
+            <td>not yet implemented</td>
+            <td><%=workorder.dueDate%></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
