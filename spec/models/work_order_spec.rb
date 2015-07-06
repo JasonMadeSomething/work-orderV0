@@ -13,9 +13,18 @@ RSpec.describe WorkOrder, type: :model do
   it { should validate_presence_of(:client_id) }
   it { should validate_presence_of(:project_type_id) }
   it { should validate_presence_of(:status_id) }
-  it { should allow_value('8801504-001', '8801612-999', '8881501-055', '7512005-010').for(:number) }
-  it { should_not allow_value('321654764', '123-04-045', '12-01-587', '8801504-000', '8801513-001').for(:number) }
-  it { should allow_value('001', '999', '010', '100', '505', '055').for(:monthlySequenceNumber) }
+  it do
+    should allow_value('8801504-001', '8801612-999',
+                       '8881501-055', '7512005-010').for(:number)
+  end
+  it do
+    should_not allow_value('321654764', '123-04-045', '12-01-587',
+                           '8801504-000', '8801513-001').for(:number)
+  end
+  it do
+    should allow_value('001', '999', '010',
+                       '100', '505', '055').for(:monthlySequenceNumber)
+  end
 
   describe '.schedule' do
     before(:all) do
@@ -26,7 +35,8 @@ RSpec.describe WorkOrder, type: :model do
 
     it 'should only return active work orders' do
       WorkOrder.schedule.each do |wo|
-        expect(wo).to be_active, '#{wo} should be active but is #{wo.status.description}'
+        expect(wo).to be_active,
+                      '#{wo} should be active but is #{wo.status.description}'
       end
     end
     it 'should order work orders by due date' do
@@ -64,7 +74,8 @@ RSpec.describe WorkOrder, type: :model do
     end
 
     context 'is not the first Work order of the month' do
-      it 'should have a sequence number 1 greater than the most recently created record' do
+      it 'should have a sequence number 1 greater
+          than the most recently created work order' do
         placeholder = FactoryGirl.create(:base_work_order)
         wo = FactoryGirl.create(:base_work_order)
         expect(wo.number[-3, 3].to_i).to eq(placeholder.number[-3, 3].to_i + 1)
@@ -84,7 +95,8 @@ RSpec.describe WorkOrder, type: :model do
       end
 
       it 'should use current date to set middle 4 digits' do
-        expect(wo.number[3, 4]).to eq("#{Date.today.year.to_s[-2, 2]}#{'%02d' % Date.today.month.to_s}")
+        expect(wo.number[3, 4]).to eq("#{Date.today.year.to_s[-2, 2]}
+                                      #{'%02d' % Date.today.month.to_s}")
       end
 
       it 'should not update number when workorder is edited' do
