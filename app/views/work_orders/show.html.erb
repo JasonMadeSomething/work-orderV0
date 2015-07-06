@@ -1,0 +1,56 @@
+<%provide(:for,"ing Work Order " + @workorder.display_number + " ")%>
+
+<div class="page-header">
+    <h1>Work Order: <%=@workorder.display_number%> <small>Client: <%=@workorder.client.name%></small></h1>
+    <div class="row">
+        <div class="col-md-8">
+            <h2><%=@workorder.title%></h2>
+        </div>
+        <div class="col-md-4">
+            <% if @workorder.dueDate > Date.today %>
+                <h3>Due: <%=@workorder.dueDate.strftime("%A %B %d, %Y")%></h3>
+            <% else %>
+                <h3 class="text-danger">Due: <%=@workorder.dueDate.strftime("%A %B %d, %Y")%></h3>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <p>
+            <strong>Project type:</strong>
+            <%= @workorder.project_type.name %>
+        </p>
+          
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Processing Information</h3>
+    </div>
+    <div class="panel-body">
+        <% if @workorder.presort_information %>
+            <%=@workorder.presort_information.mail_class.name %>
+            <%=@workorder.presort_information.piece_type.name %>
+            <%=@workorder.presort_information.postage_type.name %>
+            <%=@workorder.presort_information.sortation.name %>
+            <%=@workorder.presort_information.mailing_specs.height %>
+            <%=@workorder.presort_information.mailing_specs.width %>
+            <%=@workorder.presort_information.mailing_specs.sampleSize %>
+            <%=@workorder.presort_information.mailing_specs.weightOfSample %>
+            <%=@workorder.presort_information.deduping_instructions.name %>
+            <%=@workorder.presort_information.deduping_instructions.instruction %>
+            <%=@workorder.presort_information.error_record_handling.name %>
+            <%=@workorder.presort_information.error_record_handling.instruction %>
+        <%end%>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Production Information</h3>
+    </div>
+    <div class="panel-body">
+        <%= @workorder.production_details %>
+    </div>
+</div>

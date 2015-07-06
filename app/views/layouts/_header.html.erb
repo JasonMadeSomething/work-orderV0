@@ -1,0 +1,28 @@
+<header>
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <%= link_to "Work Order Portal", root_path, id: 'logo', class: "navbar-brand" %>
+    </div>
+    
+    <ul class="nav navbar-nav">
+      <li class= "<%= active_tab?(controller_name, action_name, 'Work Orders') ? 'active' + ' dropdown' : 'dropdown' %>">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Work Orders<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+             <li><%= link_to "Schedule", schedule_path %> </li> 
+             <li><%= link_to "Archive", archive_path %></li>
+            </ul>
+        </li>
+      <li class= "<%= 'active' if active_tab?(controller_name, action_name, 'Clients')%>"><%= link_to "Clients", client_index_path %></li>
+    </ul>
+    
+    <%= form_tag new_work_order_path, :method => "get", class: "navbar-form navbar-left" do %>
+      <div class="form-group">
+        <%= text_field_tag :client_number, params[:client_number],  class: "form-control", placeholder: "Enter client number"%>
+      </div>
+      <button type="sumbit" class="btn btn-default">New Work Order</button>
+    <% end %>
+    
+  </div>
+</nav>
+</header>
