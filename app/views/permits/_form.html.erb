@@ -41,10 +41,16 @@
             <%= f.text_field :nonprofitAuthorizationNumber, class: "form-control" %>
         </div>             
     </div>
-       <div class="form-group">
+
+    <div class="col-md-5">
+        <div class="form-group">
           <%= label_tag :checkbox, "Client is permit holder", class: "control-label" %>
           <%= check_box_tag("Client is permit holder",  class: "checkbox") %>
-       </div>
+       </div> 
+    </div> 
+
+
+
     <%= f.hidden_field(:client_id, :value => Client.find_by(clientnumber: params[:client_number])) %>
     <%= f.submit %>
 <%end%>
