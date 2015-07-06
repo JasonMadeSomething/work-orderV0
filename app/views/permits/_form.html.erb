@@ -6,45 +6,46 @@
                 <% @permit.errors.full_messages.each do |message| %>
                     <li><%=message %></li>
                 <%end%>
-            </ul>        
+            </ul>
         </div>
     <%end%>
     <div class="col-md-5">
         <div class="form-group">
             <%= f.label :permit_Holder, class: "control-label" %>
             <%= f.text_field :permitHolder, class: "form-control" %>
-        </div> 
+        </div>
     </div>
-    
+
     <div class="col-md-5">
         <div class="form-group">
             <%= f.label :permit_number, class: "control-label" %>
             <%= f.text_field :permit_number, class: "form-control" %>
-        </div>            
+        </div>
     </div>
     <div class="col-md-4">
         <div class="form-group">
             <%= f.label :Post_Office, class: "control-label" %>
             <%= f.text_field :postOffice, class: "form-control" %>
-        </div>               
+        </div>
     </div>
 
     <div class = "col-md-3">
         <div class="form-group">
             <%= f.label :CRID, class: "control-label" %>
             <%= f.text_field :crid, class: "form-control" %>
-        </div>        
+        </div>
     </div>
     <div class = "col-md-3">
         <div class="form-group">
             <%= f.label "Non-Profit #", class: "control-label" %>
             <%= f.text_field :nonprofitAuthorizationNumber, class: "form-control" %>
-        </div>             
+        </div>
     </div>
-       <div class="form-group">
-          <%= label_tag :checkbox, "Client is permit holder", class: "control-label" %>
-          <%= check_box_tag("Client is permit holder",  class: "checkbox") %>
-       </div>
+
     <%= f.hidden_field(:client_id, :value => Client.find_by(clientnumber: params[:client_number])) %>
     <%= f.submit %>
 <%end%>
+    <div class="form-group">
+        <%= label_tag :checkbox, "Client is permit holder", class: "control-label" %>
+        <%= check_box_tag("Client is permit holder",  class: "checkbox") %>
+    </div>
