@@ -96,7 +96,7 @@ RSpec.describe WorkOrder, type: :model do
 
       it 'should use current date to set middle 4 digits' do
         expect(wo.number[3, 4]).to eq("#{Date.today.year.to_s[-2, 2]}
-                                      #{'%02d' % Date.today.month.to_s}")
+                                    #{format('%02d', Date.today.month.to_s) }")
       end
 
       it 'should not update number when workorder is edited' do
