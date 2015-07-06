@@ -16,13 +16,17 @@ class WorkOrder < ActiveRecord::Base
   validates_format_of :monthlySequenceNumber, with: /(?:00[1-9]|0[1-9]\d|[1-9]\d\d)/
   validates :printing_instructions, presence: true, if: :has_printing_componant?
   validates :presort_information, presence: true, if: :has_mailing_componant?
-  
+  accepts_nested_attributes_for :presort_information, :printing_instructions, :production_details
   
   before_validation :set_monthly_sequence_number, :set_workorder_number, on: :create, unless: @number
   
   def set_workorder_number
       set_monthly_sequence_number
       self.number = "#{self.client.clientnumber}#{month_and_year_string}-#{self.monthlySequenceNumber}" if client
+  end
+  
+  def display_number
+     self.number[0..2] + "-" + self.number[5..6] + "-" + self.number[-3,3]
   end
   
   def self.schedule
