@@ -30,11 +30,17 @@ class WorkOrdersController < ApplicationController
     @workorder.status = Status.find_by(description: 'Active')
     respond_to do |format|
       if @workorder.save
-        format.html { redirect_to @workorder, notice: 'Work Order was successfully created.' }
+        format.html do
+          redirect_to @workorder,
+                      notice: 'Work Order was successfully created.'
+        end
         format.json { render :show, status: :created, location: @workorder }
       else
         format.html { render :new }
-        format.json { render json: @workorder.errors, status: :unprocessable_entity }
+        format.json do
+          render json: @workorder.errors,
+                 status: :unprocessable_entity
+        end
       end
     end
   end
