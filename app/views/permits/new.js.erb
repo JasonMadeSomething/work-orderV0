@@ -1,3 +1,4 @@
-$('#work_order_presort_information_attributes_permit_id').hide();
-$('#new_permit').hide();
-$('.row-float').prepend('<%= j render("form") %>');
+$('#Permit-row').children().hide();
+$('#Permit-row').before('<div class="col-md-12 form-group"><h2>Creating new permit</h2></div>').hide().slideDown('fast');
+$('#Permit-row').append('<%= j render("form") %>').hide().slideDown('fast');
+

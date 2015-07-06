@@ -1,4 +1,4 @@
-<%= fields_for @permit, remote: true do |f| %>
+<%= fields_for @permit do |f| %>
         <% if @permit.errors.any? %>
         <div id ="error_explanation">
             <h2><%= pluralize(@permit.errors.count, "error") %> prohibited this permit from being saved:</h2>
@@ -9,6 +9,7 @@
             </ul>
         </div>
     <%end%>
+    <%= f.hidden_field(:client_id, :value => Client.find_by(clientnumber: params[:client_number])) %>
     <div class="col-md-5">
         <div class="form-group">
             <%= f.label :permit_Holder, class: "control-label" %>
@@ -46,14 +47,11 @@
     <div class="col-md-5">
         <div class="form-group">
           <%= label_tag :checkbox, "Client is permit holder", class: "control-label" %>
-          <%= check_box_tag("Client is permit holder",  class: "checkbox") %>
+          <%= check_box_tag("Client is permit holder",  class: "checkbox-inline") %>
        </div>
     </div>
 
-    <%= f.hidden_field(:client_id, :value => Client.find_by(clientnumber: params[:client_number])) %>
+    
 
 <%end%>
-    <div class="form-group">
-        <%= label_tag :checkbox, "Client is permit holder", class: "control-label" %>
-        <%= check_box_tag("Client is permit holder",  class: "checkbox") %>
-    </div>
+

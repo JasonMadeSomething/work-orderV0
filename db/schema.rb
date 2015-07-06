@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150626165035) do
+ActiveRecord::Schema.define(version: 20150706214020) do
 
   create_table "addresses", force: true do |t|
     t.string   "address1"
@@ -131,6 +131,7 @@ ActiveRecord::Schema.define(version: 20150626165035) do
     t.integer  "labels_id"
     t.integer  "postage_type_id"
     t.integer  "piece_type_id"
+    t.text     "processing_notes"
   end
 
   add_index "presort_informations", ["deduping_instructions_id"], name: "index_presort_informations_on_deduping_instructions_id", using: :btree
@@ -226,6 +227,7 @@ ActiveRecord::Schema.define(version: 20150626165035) do
     t.date     "mailedDate"
     t.text     "projectDescription"
     t.string   "rep"
+    t.text     "jobNotes"
   end
 
   add_index "work_orders", ["client_id"], name: "index_work_orders_on_client_id", using: :btree

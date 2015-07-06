@@ -85,8 +85,6 @@
             <div class="form-group">
               <%= ff.label :Error_Handling, class: "control-label" %>
               <%= ff.collection_select(:error_record_handling_id, ErrorRecordHandling.all, :id, :name, {:prompt => true}, {:class => "form-control"}) %>
-              <div class="form-group">
-            </div>    
             </div>            
           </div>
           <div class="col-md-6">
@@ -101,7 +99,15 @@
               <%= ff.label :Dropship_Location, class: "control-label" %>
               <%= ff.text_field :dropshipLocation, class: "form-control" %>
             </div>
+
           </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= ff.label :Processing_notes, class: "control-label" %>
+              <%= ff.text_area :processing_notes, class: "form-control" %>              
+            </div>
+          </div>
+
         </div>
         </div>
         <div class="col-md-6">
@@ -134,21 +140,27 @@
             <legend>Permit</legend>
             <% available_permits = @workorder.client.permits %>
             <% available_permits << Permit.find_by(permitHolder: "Mail Marketing") if Permit.find_by(permitHolder: "Mail Marketing") %>
-            <div class="row-float">
+            <div class="row-fluid" id="Permit-row">
               <div class= "col-md-5">
                 <div class="form-group">
                 <%= ff.collection_select(:permit_id, available_permits, :id, :permit_number, {:prompt => "Select Permit"}, {:class => "form-control"}) %>
                 </div>
+              </div>
+              <div class="col-md-3">
                 <div class="form-group">
-                  <%= label_tag :checkbox, "Client is not mail owner", class: "control-label" %>
-                  <%= check_box_tag("Client is not mail owner",  class: "checkbox") %>
+                  <%= link_to "New Permit", new_permit_path, id: "new_permit", remote: true, class: "btn btn-default" %>
                 </div>
-
               </div>
             </div>
-              <div class="form-group col-md-3">
-                <%= link_to "New Permit", new_permit_path, id: "new_permit", remote: true, class: "btn btn-default" %>
+            
+
+              <div class="col-md-5">
+                <div class="form-group">
+                  <%= label_tag :checkbox, "Client is not mail owner", class: "control-label" %>
+                  <%= check_box_tag("Client is not mail owner",  class: "checkbox-inline") %>
+                </div>                
               </div>
+
           </fieldset>
       </div>
     <% end %>
@@ -164,18 +176,39 @@
               <%= ff.text_field :paperStock, class: "form-control" %>            
             </div>            
           </div>
-          <div class="col-md-1">
+          <div class="col-md-2">
             <div class "form-group">
               <%= ff.label "N-Up", class: "control-label" %>
               <%= ff.text_field :nUp, class: "form-control" %>            
             </div>    
           </div>
-          <div class="col-md-3">
+          <div class="col-md-2">
             <div class "form-group">
-              <%= ff.label :checkbox, "Color?" %>    
-              <%= ff.check_box(:color, class: "checkbox") %>            
+              <%= ff.label :checkbox, "Color?", class: "control-label" %>    
+              <%= ff.check_box(:color, class: "checkbox-inline") %>            
             </div>              
-          </div>    
+          </div>
+          <div class="col-md-2">
+            <div class "form-group">
+              <%= ff.label :checkbox, "Duplex?", class: "control-label" %>    
+              <%= ff.check_box(:duplex, class: "checkbox-inline") %>            
+            </div>              
+          </div>
+          <div class="col-md-2">
+            <div class "form-group">
+              <%= ff.label :checkbox, "Variable Data", class: "control-label" %>    
+              <%= ff.check_box(:variableData, class: "checkbox-inline") %>            
+            </div>              
+          </div> 
+        </div>
+      </div>
+      <div class="row-fluid">
+        <div class = "col-md-12">
+          <div class="col-md-5">
+            <div class="form-group">
+              XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+            </div>
+          </div>
         </div>
       </div>
     <%end%>
