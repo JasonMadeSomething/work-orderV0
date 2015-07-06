@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe WorkOrderController, type: :controller do
+RSpec.describe WorkOrdersController, type: :controller do
 
     describe "GET #schedule" do
       before(:all) do

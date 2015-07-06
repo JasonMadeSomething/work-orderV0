@@ -16,7 +16,8 @@ development:
 test:
   adapter: mysql2
   encoding: utf8
-  username: <%=ENV['C9_USER']%>
+  username: root
+
   host: <%=ENV['IP']%>
   pool: 5
   timeout: 5000
