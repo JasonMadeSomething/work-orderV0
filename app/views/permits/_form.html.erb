@@ -47,11 +47,11 @@
         <div class="form-group">
           <%= label_tag :checkbox, "Client is permit holder", class: "control-label" %>
           <%= check_box_tag("Client is permit holder",  class: "checkbox") %>
-       </div> 
-    </div> 
+       </div>
+    </div>
 
     <%= f.hidden_field(:client_id, :value => Client.find_by(clientnumber: params[:client_number])) %>
-    <%= f.submit %>
+
 <%end%>
     <div class="form-group">
         <%= label_tag :checkbox, "Client is permit holder", class: "control-label" %>
