@@ -25,7 +25,7 @@
                 <td><%=workorder.projectDescription%></td>
                 <td><%=workorder.quantity%></td>
                 <td><%=workorder.dueDate.strftime("%A %B %d, %Y")%></td>
-                <td><%=collection_select(:workorder, :status_id, Status.all, :id, :description) %></td>
+                <td class="status"><%=collection_select(:workorder, :status_id, Status.all, :id, :description) %></td>
             </tr>
         <% end %>
     </tbody>
