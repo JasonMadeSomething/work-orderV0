@@ -27,7 +27,7 @@
 			"file": "app/models/work_order.rb",
 			"settings":
 			{
-				"buffer_size": 2095,
+				"buffer_size": 2207,
 				"line_ending": "Windows"
 			}
 		},
@@ -36,38 +36,6 @@
 			"settings":
 			{
 				"buffer_size": 257,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/controllers/work_orders_controller.rb",
-			"settings":
-			{
-				"buffer_size": 1501,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/controllers/client_controller.rb",
-			"settings":
-			{
-				"buffer_size": 494,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/views/permits/_form.html.erb",
-			"settings":
-			{
-				"buffer_size": 1901,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/Ruby193/dk/config.yml",
-			"settings":
-			{
-				"buffer_size": 506,
 				"line_ending": "Windows"
 			}
 		}
@@ -187,6 +155,10 @@
 	},
 	"file_history":
 	[
+		"/C/Users/jteit_000/Documents/GitHub/work-orderV0/app/controllers/work_orders_controller.rb",
+		"/C/Users/jteit_000/Documents/GitHub/work-orderV0/app/controllers/client_controller.rb",
+		"/C/Users/jteit_000/Documents/GitHub/work-orderV0/app/views/permits/_form.html.erb",
+		"/C/Ruby193/dk/config.yml",
 		"/C/Users/Jason/Documents/GitHub/work-orderV0/Gemfile",
 		"/C/Users/Jason/Documents/GitHub/work-orderV0/config/database.yml",
 		"/C/Ruby21/lib/ruby/gems/2.1.0/gems/json-1.8.3/lib/json.rb",
@@ -259,7 +231,7 @@
 	"groups":
 	[
 		{
-			"selected": 6,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -287,7 +259,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -317,7 +289,7 @@
 						"translation.y": 109.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -326,15 +298,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2095,
+						"buffer_size": 2207,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1421,
-								1421
+								1200,
+								1200
 							]
 						],
 						"settings":
@@ -344,10 +316,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 486.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -370,124 +342,6 @@
 						"settings":
 						{
 							"syntax": "Packages/Ruby/Ruby.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "app/controllers/work_orders_controller.rb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1501,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								380,
-								380
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "app/controllers/client_controller.rb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 494,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								117,
-								117
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "app/views/permits/_form.html.erb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1901,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1890,
-								1890
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "/C/Ruby193/dk/config.yml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 506,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/YAML/YAML.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
