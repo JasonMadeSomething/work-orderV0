@@ -22,11 +22,11 @@ class WorkOrder < ActiveRecord::Base
 
   def set_workorder_number
     set_monthly_sequence_number
-    self.number = "#{ self.client.clientnumber }#{ month_and_year_string }-#{ self.monthlySequenceNumber }" if client
+    self.number = "#{ client.clientnumber }#{ month_and_year_string }-#{ monthlySequenceNumber }" if client
   end
 
   def display_number
-    self.number[0..2] + '-' + self.number[5..6] + '-' + self.number[-3, 3]
+    number[0..2] + '-' + number[5..6] + '-' + number[-3, 3]
   end
 
   def self.schedule
@@ -34,7 +34,7 @@ class WorkOrder < ActiveRecord::Base
   end
 
   def active?
-    if self.status.description == 'Active'
+    if status.description == 'Active'
       true
     else
       false
