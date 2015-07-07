@@ -8,14 +8,6 @@
 	"buffers":
 	[
 		{
-			"file": "app/views/permits/create.js.erb",
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "app/views/permits/new.js.erb",
 			"settings":
 			{
@@ -32,18 +24,18 @@
 			}
 		},
 		{
-			"file": "app/models/client.rb",
+			"file": "app/models/work_order.rb",
 			"settings":
 			{
-				"buffer_size": 257,
+				"buffer_size": 2095,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "spec/models/work_order_spec.rb",
+			"file": "app/models/client.rb",
 			"settings":
 			{
-				"buffer_size": 5255,
+				"buffer_size": 257,
 				"line_ending": "Windows"
 			}
 		},
@@ -70,21 +62,41 @@
 				"buffer_size": 1901,
 				"line_ending": "Windows"
 			}
+		},
+		{
+			"file": "/C/Ruby193/dk/config.yml",
+			"settings":
+			{
+				"buffer_size": 506,
+				"line_ending": "Windows"
+			}
 		}
 	],
-	"build_system": "",
+	"build_system": "Packages/Ruby/Ruby.sublime-build",
 	"command_palette":
 	{
-		"height": 58.0,
+		"height": 150.0,
 		"selected_items":
 		[
 			[
-				"quick",
-				"Git: Quick Commit"
+				"install",
+				"Package Control: Install Package"
 			],
 			[
 				"intsall",
 				"Package Control: Install Package"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"quick",
+				"Git: Quick Commit"
 			],
 			[
 				"rspec",
@@ -93,10 +105,6 @@
 			[
 				"quic",
 				"Git: Quick Commit"
-			],
-			[
-				"install",
-				"Package Control: Install Package"
 			],
 			[
 				"git stat",
@@ -139,13 +147,14 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 472.0
+		"width": 416.0
 	},
 	"console":
 	{
 		"height": 146.0,
 		"history":
 		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
 			"rspec",
 			"git commit -am \"Some more linting\"",
 			"echo $shell",
@@ -178,6 +187,15 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Jason/Documents/GitHub/work-orderV0/Gemfile",
+		"/C/Users/Jason/Documents/GitHub/work-orderV0/config/database.yml",
+		"/C/Ruby21/lib/ruby/gems/2.1.0/gems/json-1.8.3/lib/json.rb",
+		"/C/Ruby21/devkitvars.bat",
+		"/C/Ruby21/devkitvars.ps1",
+		"/C/Users/Jason/AppData/Roaming/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
+		"/C/Users/Jason/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/Jason/Documents/GitHub/work-orderV0/spec/models/work_order_spec.rb",
+		"/C/Users/Jason/Documents/GitHub/work-orderV0/app/views/permits/create.js.erb",
 		"/C/Users/jteit_000/Documents/GitHub/work-orderV0/spec/controllers/work_orders_controller_spec.rb",
 		"/C/Users/jteit_000/Documents/GitHub/work-orderV0/spec/controllers/work_order_controller_spec.rb",
 		"/C/Users/jteit_000/Documents/GitHub/work-orderV0/spec/controllers/client_controller_spec.rb",
@@ -193,7 +211,7 @@
 	],
 	"find":
 	{
-		"height": 26.0
+		"height": 23.0
 	},
 	"find_in_files":
 	{
@@ -241,39 +259,11 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 6,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/views/permits/create.js.erb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/JavaScript (Rails).tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
 					"file": "app/views/permits/new.js.erb",
 					"semi_transient": false,
 					"settings":
@@ -297,11 +287,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 1,
 					"file": "spec/rails_helper.rb",
 					"semi_transient": false,
 					"settings":
@@ -313,8 +303,8 @@
 						"selection":
 						[
 							[
-								1792,
-								1792
+								1870,
+								1870
 							]
 						],
 						"settings":
@@ -324,10 +314,40 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 378.0,
+						"translation.y": 109.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/models/work_order.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2095,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1421,
+								1421
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -355,41 +375,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "spec/models/work_order_spec.rb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5255,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3396,
-								3396
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/RSpec/RSpec.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1350.0,
-						"zoom_level": 1.0
-					},
 					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 4,
 					"file": "app/controllers/work_orders_controller.rb",
 					"semi_transient": false,
 					"settings":
@@ -419,7 +409,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 5,
 					"file": "app/controllers/client_controller.rb",
 					"semi_transient": false,
 					"settings":
@@ -445,11 +435,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 6,
 					"file": "app/views/permits/_form.html.erb",
 					"semi_transient": false,
 					"settings":
@@ -461,8 +451,8 @@
 						"selection":
 						[
 							[
-								32,
-								32
+								1890,
+								1890
 							]
 						],
 						"settings":
@@ -475,7 +465,35 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "/C/Ruby193/dk/config.yml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 506,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/YAML/YAML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -483,7 +501,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 26.0
+		"height": 23.0
 	},
 	"input":
 	{
@@ -527,7 +545,7 @@
 	"project": "work-order.sublime-project",
 	"replace":
 	{
-		"height": 48.0
+		"height": 42.0
 	},
 	"save_all_on_build": true,
 	"select_file":
