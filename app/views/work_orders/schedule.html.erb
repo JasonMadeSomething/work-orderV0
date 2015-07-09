@@ -9,6 +9,7 @@
     <thead>
         <tr>
             <th>Work Order Number</th>
+            <th>Title</th>
             <th>Client</th>
             <th>Description</th>
             <th>Quantity</th>
@@ -19,13 +20,14 @@
     
     <tbody>
         <% @workorders.each do |workorder| %>
-            <tr>
-                <td><%=link_to(workorder.display_number,work_order_path(workorder))%></td>
+            <tr class = "<%="success" if workorder.status.description == "Completed"%>">
+                <td><h4><%=link_to(workorder.display_number,work_order_path(workorder))%></h4></td>
+                <td><h5><%=workorder.title%></h5></td>
                 <td><%=workorder.client.name%></td>
                 <td><%=workorder.projectDescription%></td>
                 <td><%=workorder.quantity%></td>
-                <td><%=workorder.dueDate.strftime("%A %B %d, %Y")%></td>
-                <td class="status"><%=collection_select(:workorder, :status_id, Status.all, :id, :description) %></td>
+                <td><%= best_in_place workorder, :dueDate, :as => :date, :display_as => :display_date %></td>
+                <td><%= best_in_place workorder, :status_id, :as => :select, :collection => Status.status_id_collection, :class => "status" %></td>
             </tr>
         <% end %>
     </tbody>

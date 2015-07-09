@@ -15,8 +15,8 @@ class WorkOrder < ActiveRecord::Base
   validates_format_of :number, with: /(?:00[1-9]|0[1-9]\d|[1-9]\d\d)\d{2}(?:0[1-9]|1[0-2])-(?:00[1-9]|0[1-9]\d|[1-9]\d\d)/
   validates_format_of :monthlySequenceNumber,
                       with: /(?:00[1-9]|0[1-9]\d|[1-9]\d\d)/
-  validates :printing_instructions, presence: true, if: :printing_componant?
-  validates :presort_information, presence: true, if: :mailing_componant?
+  validates :printing_instructions, presence: true, if: :printing_componant?, on: :create
+  validates :presort_information, presence: true, if: :mailing_componant?, on: :create
   accepts_nested_attributes_for :presort_information,
                                 :printing_instructions,
                                 :production_details
@@ -34,7 +34,11 @@ class WorkOrder < ActiveRecord::Base
   def display_number
     number[0..2] + '-' + number[5..6] + '-' + number[-3, 3]
   end
-
+  
+  def display_date
+    dueDate.strftime('%D')
+  end
+  
   def self.schedule
     WorkOrder.joins(:status).where(statuses: { description: 'Active' }).order(:dueDate)
   end

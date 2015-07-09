@@ -27,6 +27,9 @@ gem 'sdoc',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
+gem 'jquery-turbolinks'
+gem 'jquery-ui-rails'
+gem 'best_in_place'
 
 group :development, :test do
     gem 'spring-commands-rspec'

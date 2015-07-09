@@ -1,7 +1,7 @@
 # Controller for central object in system
 # Most things will go through here
 class WorkOrdersController < ApplicationController
-  before_action :set_workorder, only: [:show, :destroy, :edit]
+  before_action :set_workorder, only: [:show, :destroy, :edit, :update]
 
   def index
     redirect_to schedule_path
@@ -44,7 +44,19 @@ class WorkOrdersController < ApplicationController
       end
     end
   end
-
+  
+  def update
+    respond_to do |format|
+      if @workorder.update_attributes(workorder_params)
+        format.html { redirect_to(@workorder, notice: 'Successfully edited work order.') }
+        format.json { respond_with_bip(@workorder) }
+      else
+        format.html { render :action => "edit"}
+        format.json { respond_with_bip(@workorder) }
+      end
+    end
+  end
+  
   def show
   end
 
@@ -53,6 +65,9 @@ class WorkOrdersController < ApplicationController
 
   def destroy
     @workorder.status.description = 'Deleted'
+    respond_to do |format|
+      format.js { @workorder.status.description = 'Deleted' }
+    end
   end
 
   private
