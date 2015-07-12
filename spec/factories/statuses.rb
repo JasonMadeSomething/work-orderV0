@@ -10,5 +10,13 @@ FactoryGirl.define do
     factory :status_held do
       description "On Hold"
     end
+    
+    factory :status_deleted do
+      description "Delete"
+    end
+    
+    factory :status_mailed do
+      description "Mailed"
+    end
   end
 end

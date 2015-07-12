@@ -5,4 +5,8 @@ class Permit < ActiveRecord::Base
     has_many :work_orders, :through => :presort_informations
     has_many :presort_informations
     validates_presence_of :permitHolder, :postOffice, :contact, :permit_number
+    
+    def display_name
+        "#{permit_number} - #{permitHolder}"
+    end
 end

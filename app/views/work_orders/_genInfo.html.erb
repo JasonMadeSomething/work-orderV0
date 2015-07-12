@@ -1,0 +1,34 @@
+<legend>General</legend>
+    <div class="col-md-12">
+      <div class="col-md-3">
+        <div class="form-group">
+          <%= f.label :Job_Title, class: "control-label" %>
+          <%= f.text_field :title, class:"form-control" %>
+        </div>
+  
+        <div class="form-group">
+          <%= f.label :Project_Type, class: "control-label" %>
+          <%= f.collection_select(:project_type_id, ProjectType.all, :id, :name, {:prompt => true}, {:class => "form-control"}) %>
+        </div>
+      </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <%= f.label :Rep, class: "control-label" %>
+        <%= f.text_field :rep, class:"form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :Labels, class: "control-label" %>
+        <%= f.collection_select(:labels_id, Labels.all, :id, :name, {:prompt => true}, {:class => "form-control"}) %>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class= "form-group">
+          <%= f.label :Due_Date, class: "control-label" %>
+          <%= f.text_field :dueDate, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :Project_Description, class: "control-label" %>
+        <%= f.text_area :projectDescription,  class: "form-control" %>
+      </div>
+    </div>
+ </div>

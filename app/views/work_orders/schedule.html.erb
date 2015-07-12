@@ -22,7 +22,7 @@
         <% @workorders.each do |workorder| %>
             <tr class = "<%="success" if workorder.status.description == "Completed"%>">
                 <td><h4><%=link_to(workorder.display_number,work_order_path(workorder))%></h4></td>
-                <td><h5><%=workorder.title%></h5></td>
+                <td><%=workorder.title%></td>
                 <td><%=workorder.client.name%></td>
                 <td><%=workorder.projectDescription%></td>
                 <td><%=workorder.quantity%></td>

@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     get 'archive'
   end
   resources :permits
+  resources :printing_instructions
+  resources :presort_informations
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

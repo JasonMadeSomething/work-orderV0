@@ -39,10 +39,10 @@
             <%=@workorder.presort_information.mailing_specs.width %>
             <%=@workorder.presort_information.mailing_specs.sampleSize %>
             <%=@workorder.presort_information.mailing_specs.weightOfSample %>
-            <%=@workorder.presort_information.deduping_instructions.name %>
-            <%=@workorder.presort_information.deduping_instructions.instruction %>
-            <%=@workorder.presort_information.error_record_handling.name %>
-            <%=@workorder.presort_information.error_record_handling.instruction %>
+            <%=@workorder.presort_information.deduping_instructions.name if @workorder.presort_information.deduping_instructions %>
+            <%=@workorder.presort_information.deduping_instructions.instruction if @workorder.presort_information.deduping_instructions %>
+            <%=@workorder.presort_information.error_record_handling.name if @workorder.presort_information.error_record_handling %>
+            <%=@workorder.presort_information.error_record_handling.instruction if @workorder.presort_information.error_record_handling %>
         <%end%>
     </div>
 </div>

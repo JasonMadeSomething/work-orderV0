@@ -7,7 +7,6 @@ class Contact < ActiveRecord::Base
     before_save :check_for_existing_address
     
     
-    
     protected
     
         def check_for_existing_address

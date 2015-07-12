@@ -1,9 +1,7 @@
 <%= form_for(@workorder) do |f| %>
-  
   <% if @workorder.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@workorder.errors.count, "error") %> prohibited this workorder from being saved:</h2>
-
       <ul>
       <% @workorder.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,207 +9,28 @@
       </ul>
     </div>
   <% end %>
-  <fieldset class="general-info">
-    <legend>General</legend>
-    <div class="col-md-12">
-      <div class="col-md-3">
-        <div class="form-group">
-          <%= f.label :Job_Title, class: "control-label" %>
-          <%= f.text_field :title, class:"form-control" %>
-        </div>
   
-        <div class="form-group">
-          <%= f.label :Project_Type, class: "control-label" %>
-          <%= f.collection_select(:project_type_id, ProjectType.all, :id, :name, {:prompt => true}, {:class => "form-control"}) %>
-        </div>
-      </div>
-    <div class="col-md-3">
-      <div class="form-group">
-        <%= f.label :Rep, class: "control-label" %>
-        <%= f.text_field :rep, class:"form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label :Labels, class: "control-label" %>
-        <%= f.collection_select(:labels_id, Labels.all, :id, :name, {:prompt => true}, {:class => "form-control"}) %>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class= "form-group">
-          <%= f.label :Due_Date, class: "control-label" %>
-          <%= f.text_field :dueDate, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label :Project_Description, class: "control-label" %>
-        <%= f.text_area :projectDescription,  class: "form-control" %>
-      </div>
-    </div>
-  </div>
+  <fieldset id="general-info-partial">
+    <%=render("genInfo", f: f)%>
   </fieldset>
-  <fieldset class="presort-information">
-    <legend>Mailing</legend>
-    <%= f.fields_for :presort_information, PresortInformation.new do |ff| %>
-      <div class="row-fluid">
-        <div class="col-md-6">
-          <div class="col-md-6">
-            <div class="form-group">
-              <%= ff.label :Mail_Class, class: "control-label" %>
-              <%= ff.collection_select(:mail_class_id, MailClass.all, :id, :name, {:prompt => true}, {:class => "form-control"})%>
-  
-              <%= ff.label :Piece_Type, class: "control-label" %>
-              <%= ff.collection_select(:piece_type_id, PieceType.all, :id, :name, {:prompt => true}, {:class => "form-control"})%> 
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <%= ff.label :Postage_Type, class: "control-label" %>
-              <%= ff.collection_select(:postage_type_id, PostageType.all, :id, :name,  {:prompt => true}, {:class => "form-control"}) %>
-  
-              <%= ff.label :Sortation, class: "control-label" %>
-              <%= ff.collection_select(:sortation_id, Sortation.all, :id, :name,  {:prompt => true}, {:class => "form-control"}) %>
-            </div>  
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <%= ff.label :Suppression?, class: "control-label" %>
-              <%= ff.label :suppression, "Yes", :value => "true", class: "control-label"  %>
-              <%= ff.radio_button :suppression, true %>
-              <%= ff.label :suppression?, "No", :value => "false", class: "control-label" %>
-              <%= ff.radio_button :suppression, false, :checked => true%>
-            </div>
-            <div class="form-group">
-              <%= ff.label :Deduping_Instructions, class: "control-label" %>
-              <%= ff. collection_select(:deduping_instructions_id, DedupingInstructions.all, :id, :name, {:prompt => true}, {:class => "form-control"}) %>
-            </div>
-            <div class="form-group">
-              <%= ff.label :Error_Handling, class: "control-label" %>
-              <%= ff.collection_select(:error_record_handling_id, ErrorRecordHandling.all, :id, :name, {:prompt => true}, {:class => "form-control"}) %>
-            </div>            
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <%= ff.label :Drop_ship?, class: "control-label" %>
-              <%= ff.label :Drop_ship, "Yes", :value => "true", class: "control-label"  %>
-              <%= ff.radio_button :dropship, true %>
-              <%= ff.label :Drop_Ship?, "No", :value => "false", class: "control-label" %>
-              <%= ff.radio_button :dropship, false, :checked => true%>
-            </div>
-            <div class="form-group">
-              <%= ff.label :Dropship_Location, class: "control-label" %>
-              <%= ff.text_field :dropshipLocation, class: "form-control" %>
-            </div>
-
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <%= ff.label :Processing_notes, class: "control-label" %>
-              <%= ff.text_area :processing_notes, class: "form-control", rows: 1 %>              
-            </div>
-          </div>
-
-        </div>
-        </div>
-        <div class="col-md-6">
-          <fieldset>
-            <legend>Mailing Specs</legend>
-              <%= ff.fields_for :mailing_specs, MailingSpecs.new do |fff| %>
-             <div class="col-md-3">
-                <div class="form-group">
-                  <%= fff.label :Height, class: "control-label"%>
-                  <%= fff.text_field :height, class: "form-control" %>
-                </div>
-                <div class="form-group">
-                  <%= fff.label :Sample_Size, class: "control-label"%>
-                  <%= fff.text_field :sampleSize, placeholder: "# in one inch", class: "form-control" %>
-                </div>
-             </div>
-              <div class="col-md-3">
-                <div class="form-group">
-                  <%= fff.label :Width, class: "control-label"%>
-                  <%= fff.text_field :width, class: "form-control" %>
-                </div>
-                <div class="form-group">
-                  <%= fff.label :Sample_Weight , class: "control-label"%>
-                  <%= fff.text_field :weightOfSample, class: "form-control" %>
-                </div>
-              </div>
-              <% end %>
-          </fieldset>
-          <fieldset>
-            <legend>Permit</legend>
-            <% available_permits = @workorder.client.permits %>
-            <% available_permits << Permit.find_by(permitHolder: "Mail Marketing") if Permit.find_by(permitHolder: "Mail Marketing") %>
-            <div class="row-fluid" id="Permit-row">
-              <div class= "col-md-5">
-                <div class="form-group">
-                <%= ff.collection_select(:permit_id, available_permits, :id, :permit_number, {:prompt => "Select Permit"}, {:class => "form-control"}) %>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="form-group">
-                  <%= link_to "New Permit", new_permit_path, id: "new_permit", remote: true, class: "btn btn-default" %>
-                </div>
-              </div>
-            </div>
-            
-
-              <div class="col-md-5">
-                <div class="form-group">
-                  <%= label_tag :checkbox, "Client not mail owner", class: "control-label" %>
-                  <%= check_box_tag("Client not mail owner",  class: "checkbox-inline") %>
-                </div>                
-              </div>
-
-          </fieldset>
-      </div>
-    <% end %>
+  <fieldset id="presort-information-partial">
+    <%=render("presort_informations/form",  f: f)%>
   </fieldset>
   <div class="col-md-6">
-  <fieldset>
-    <legend>Printing</legend>
-    <%= f.fields_for :printing_instructions, PrintingInstructions.new do |ff| %>
-      <div class="row-fluid">
-
-          <div class="col-md-3">
-            <div class="form-group">
-              <%= ff.label :paper_Stock, class: "control-label" %>
-              <%= ff.text_field :paperStock, class: "form-control" %>            
-            </div>            
-          </div>
-          <div class="col-md-2">
-            <div class="form-group">
-              <%= ff.label "N-Up", class: "control-label" %>
-              <%= ff.text_field :nUp, class: "form-control" %>            
-            </div>    
-          </div>
-          <div class="col-md-2">
-            <div class="form-group">
-              <%= ff.label :checkbox, "Color?", class: "control-label" %>    
-              <%= ff.check_box(:color, class: "checkbox-inline") %>            
-            </div>              
-          </div>
-          <div class="col-md-2">
-            <div class="form-group">
-              <%= ff.label :checkbox, "Duplex?", class: "control-label" %>    
-              <%= ff.check_box(:duplex, class: "checkbox-inline") %>            
-            </div>              
-          </div>
-          <div class="col-md-3">
-            <div class="form-group">
-              <%= ff.label :checkbox, "Variable Data", class: "control-label" %>    
-              <%= ff.check_box(:variableData, class: "checkbox-inline") %>            
-            </div>              
-          </div> 
-      </div>
-    <%end%>
-  </fieldset>
+    <fieldset id="printing-information-partial">
+    <%=render("printing_instructions/form", f: f)%>
+    </fieldset>
   </div>
-  <fieldset class="production-details">
-    <legend>Production</legend>
-    <%= f.fields_for :production_details, ProductionDetails.new do |ff| %>
-    
-    <%end%>
+  <fieldset id="production-details-partial">
+    <%=render("production_details/form", f: f) %>
   </fieldset>
   <%= f.hidden_field(:number, :value => @workorder.number) %>
   <%= f.hidden_field(:client_id, :value => @workorder.client_id) %>
-  <%= f.submit(class: "btn btn-default") %>
+  <input type="submit" value="Submit" class="btn btn-default">
 <% end %>
+
+<div id="hidden-general-info" class="hidden"></div>
+
+<div id="hidden-presort-information" class="hidden"></div>
+
+<div id="hidden-printing-information" class="hidden"></div>

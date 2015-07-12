@@ -29,14 +29,16 @@ RSpec.describe WorkOrder, type: :model do
   describe '.schedule' do
     before(:all) do
       5.times { FactoryGirl.create(:base_work_order) }
+      FactoryGirl.create(:mailed_work_order)
       FactoryGirl.create(:completed_work_order)
       FactoryGirl.create(:held_work_order)
+      FactoryGirl.create(:deleted_work_order)
     end
 
-    it 'should only return active work orders' do
+    it 'should only return in house work orders' do
       WorkOrder.schedule.each do |wo|
-        expect(wo).to be_active,
-                      '#{wo} should be active but is #{wo.status.description}'
+        expect(wo).to be_in_house,
+                      "#{wo} should be in house but is #{wo.status.description}"
       end
     end
     it 'should order work orders by due date' do

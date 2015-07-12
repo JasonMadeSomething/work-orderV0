@@ -3,6 +3,7 @@ class WorkOrder < ActiveRecord::Base
   belongs_to :project_type
   belongs_to :status
   belongs_to :labels
+  belongs_to :contact
   has_one :presort_information
   has_one :printing_instructions
   has_one :production_details
@@ -40,7 +41,7 @@ class WorkOrder < ActiveRecord::Base
   end
   
   def self.schedule
-    WorkOrder.joins(:status).where(statuses: { description: 'Active' }).order(:dueDate)
+     WorkOrder.joins(:status).where.not(statuses: { description: ['Delete', 'Mailed']}).order(:dueDate)
   end
 
   def active?
@@ -50,7 +51,14 @@ class WorkOrder < ActiveRecord::Base
       false
     end
   end
-
+  
+  def in_house?
+    if status.description == 'Active' || status.description == 'Completed' || status.description == 'On Hold'
+      true
+    else
+      false
+    end
+  end
   def mailing_componant?
     project_type.mailing if project_type
   end

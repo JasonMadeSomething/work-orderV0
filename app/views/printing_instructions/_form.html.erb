@@ -1,0 +1,36 @@
+<%= f.fields_for :printing_instructions, PrintingInstructions.new do |ff| %>
+<legend>Printing</legend>
+
+  <div class="row-fluid">
+      <div class="col-md-3">
+        <div class="form-group">
+          <%= ff.label :paper_Stock, class: "control-label" %>
+          <%= ff.text_field :paperStock, class: "form-control" %>            
+        </div>            
+      </div>
+      <div class="col-md-2">
+        <div class="form-group">
+          <%= ff.label "N-Up", class: "control-label" %>
+          <%= ff.text_field :nUp, class: "form-control" %>            
+        </div>    
+      </div>
+      <div class="col-md-2">
+        <div class="form-group">
+          <%= ff.label :checkbox, "Color?", class: "control-label" %>    
+          <%= ff.check_box(:color, class: "checkbox-inline") %>            
+        </div>              
+      </div>
+      <div class="col-md-2">
+        <div class="form-group">
+          <%= ff.label :checkbox, "Duplex?", class: "control-label" %>    
+          <%= ff.check_box(:duplex, class: "checkbox-inline") %>            
+        </div>              
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <%= ff.label :checkbox, "Variable Data", class: "control-label" %>    
+          <%= ff.check_box(:variableData, class: "checkbox-inline") %>            
+        </div>              
+      </div> 
+  </div>
+<%end%>

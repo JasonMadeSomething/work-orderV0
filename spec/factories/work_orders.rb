@@ -41,6 +41,14 @@ FactoryGirl.define do
       factory :due_today_work_order do
         dueDate Date.today
       end
+      
+      factory :deleted_work_order do
+        association :status, factory: :status_deleted
+      end
+      
+      factory :mailed_work_order do
+        association :status, factory: :status_mailed
+      end
   end
     
 end
