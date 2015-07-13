@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150706211319) do
+ActiveRecord::Schema.define(version: 20150713205149) do
 
   create_table "addresses", force: true do |t|
     t.string   "address1"
@@ -193,6 +193,12 @@ ActiveRecord::Schema.define(version: 20150706211319) do
     t.boolean  "printing"
   end
 
+  create_table "roles", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "sortations", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -210,6 +216,15 @@ ActiveRecord::Schema.define(version: 20150706211319) do
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.integer  "role_id"
   end
 
   create_table "work_orders", force: true do |t|

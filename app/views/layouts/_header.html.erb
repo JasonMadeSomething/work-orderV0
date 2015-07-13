@@ -23,6 +23,15 @@
       <button type="sumbit" class="btn btn-default">New Work Order</button>
     <% end %>
     
+      <% if current_user %>
+      <%= link_to "Log-Out", logout_path, method: "delete", class: "navbar-text navbar-right"%>
+      <p class="navbar-text navbar-right">Logged in as <%=current_user.name %></p>
+      <% else %>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Sign-Up", signup_path %></li>
+        <li><%= link_to "Log-In", login_path %></li>
+      </ul>
+      <% end %>
   </div>
 </nav>
 </header>

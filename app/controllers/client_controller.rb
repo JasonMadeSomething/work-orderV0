@@ -14,4 +14,9 @@ class ClientController < ApplicationController
     @workorders = WorkOrder.where(client_id: params[:client_id]).order(:created_at).reverse_order
     render 'work_orders/archive'
   end
+  
+  def new
+    @client = Client.new()
+  end
+  
 end

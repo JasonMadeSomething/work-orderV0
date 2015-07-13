@@ -1,10 +1,21 @@
 <%provide(:for,"ing Work Order " + @workorder.display_number + " ")%>
 
 <div class="page-header">
-    <h1>Work Order: <%=@workorder.display_number%> <small>Client: <%=@workorder.client.name%></small></h1>
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-6">
+            <h1>Work Order: <%=@workorder.display_number%> <small>Client: <%=@workorder.client.name%></small></h1>
+        </div>
+        <div class="col-md-3"></div>
+        <div class="col-md-3">
+            <h3>Rep:<small> test rep</small></h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
             <h2><%=@workorder.title%></h2>
+        </div>
+        <div class="col-md-4">
+            <h3> Project Type: <%=@workorder.project_type.name%></h3>
         </div>
         <div class="col-md-4">
             <% if @workorder.dueDate > Date.today %>
@@ -15,42 +26,19 @@
         </div>
     </div>
 </div>
-
-<div class="panel panel-default">
-    <div class="panel-body">
-        <p>
-            <strong>Project type:</strong>
-            <%= @workorder.project_type.name %>
-        </p>
-          
-    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title">Processing Information</h3>
-    </div>
-    <div class="panel-body">
-        <% if @workorder.presort_information %>
-            <%=@workorder.presort_information.mail_class.name %>
-            <%=@workorder.presort_information.piece_type.name %>
-            <%=@workorder.presort_information.postage_type.name %>
-            <%=@workorder.presort_information.sortation.name %>
-            <%=@workorder.presort_information.mailing_specs.height %>
-            <%=@workorder.presort_information.mailing_specs.width %>
-            <%=@workorder.presort_information.mailing_specs.sampleSize %>
-            <%=@workorder.presort_information.mailing_specs.weightOfSample %>
-            <%=@workorder.presort_information.deduping_instructions.name if @workorder.presort_information.deduping_instructions %>
-            <%=@workorder.presort_information.deduping_instructions.instruction if @workorder.presort_information.deduping_instructions %>
-            <%=@workorder.presort_information.error_record_handling.name if @workorder.presort_information.error_record_handling %>
-            <%=@workorder.presort_information.error_record_handling.instruction if @workorder.presort_information.error_record_handling %>
-        <%end%>
-    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title">Production Information</h3>
-    </div>
-    <div class="panel-body">
-        <%= @workorder.production_details %>
-    </div>
-</div>
+<fieldset id="general-info">
+    
+</fieldset>
+<% if @workorder.mailing_componant? %>
+    <fieldset id="presort-information">
+        
+    </fieldset>
+<%end%>
+<% if @workorder.printing_componant? %>
+    <fieldset id="printing-information">
+        
+    </fieldset>
+<%end%>
+<fieldset id="production-information">
+    
+</fieldset>

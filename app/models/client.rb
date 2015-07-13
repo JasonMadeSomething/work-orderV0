@@ -5,4 +5,5 @@ class Client < ActiveRecord::Base
   validates :clientnumber, format: { with: /\A\d{3}\z/ },
                                     length: { is: 3 }
   has_many :work_orders
+  belongs_to :rep
 end
