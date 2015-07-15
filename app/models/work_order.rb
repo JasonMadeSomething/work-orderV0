@@ -41,9 +41,9 @@ class WorkOrder < ActiveRecord::Base
   def display_date
     dueDate.strftime('%D')
   end
-  
+
   def self.schedule
-     WorkOrder.joins(:status).where.not(statuses: { description: ['Delete', 'Mailed']}).order(:dueDate)
+    WorkOrder.joins(:status).where.not(statuses: { description: ['Delete', 'Mailed']}).order(:dueDate)
   end
 
   def active?
@@ -53,7 +53,7 @@ class WorkOrder < ActiveRecord::Base
       false
     end
   end
-  
+
   def in_house?
     if status.description == 'Active' || status.description == 'Completed' || status.description == 'On Hold'
       true
@@ -61,6 +61,7 @@ class WorkOrder < ActiveRecord::Base
       false
     end
   end
+
   def mailing_componant?
     project_type.mailing if project_type
   end
