@@ -5,6 +5,8 @@ RSpec.describe WorkOrder, type: :model do
   it { should belong_to(:project_type) }
   it { should belong_to(:status) }
   it { should belong_to(:labels) }
+  it { should belong_to(:processor) }
+  it { should have_one(:rep) }
   it { should have_one(:presort_information) }
   it { should have_one(:printing_instructions) }
   it { should have_one(:production_details) }

@@ -4,6 +4,8 @@ class WorkOrder < ActiveRecord::Base
   belongs_to :status
   belongs_to :labels
   belongs_to :contact
+  belongs_to :processor, class_name: 'User'
+  has_one :rep, through: :client, class_name: 'User'
   has_one :presort_information
   has_one :printing_instructions
   has_one :production_details
@@ -35,7 +37,7 @@ class WorkOrder < ActiveRecord::Base
   def display_number
     number[0..2] + '-' + number[5..6] + '-' + number[-3, 3]
   end
-  
+
   def display_date
     dueDate.strftime('%D')
   end
