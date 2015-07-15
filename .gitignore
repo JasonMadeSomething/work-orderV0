@@ -25,5 +25,5 @@
 .idea/vcs.xml
 .idea/runConfigurations/spec__work_orderV0.xml
 .idea/runConfigurations/Production__work_orderV0.xml
-work-order.sublime-workspace
-*.sublime-workspace
+/work-order.sublime-workspace
+/*.sublime-workspace
